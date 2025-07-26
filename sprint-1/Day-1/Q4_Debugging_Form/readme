@@ -1,0 +1,15 @@
+1. <label Name="username"> → <label for="username">
+- Name is not a valid attribute for <label>.
+- Replaced it with for="username" to correctly associate it with the input having id="username".
+
+2. <input type="text" id="username" name="username> → closed with " and />
+- The name attribute was missing the closing double quote.
+- Added the missing quote and closed the input tag properly with />.
+
+3. <input typ="password" → type="password"
+- Typo: typ should be type.
+- Fixed the attribute name so the input behaves correctly as a password field.
+
+4. <button Submit>Submit Form</buttn> → <button type="submit">Submit Form</button>
+- Submit is not a valid attribute, and </buttn> is a misspelling of </button>.
+- Corrected the tag to <button type="submit"> to specify it's a submit button and closed the tag properly.
