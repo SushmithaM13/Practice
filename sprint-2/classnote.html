@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="fetchProducts()"> 
+    <!-- onload is to run the function as soon as page is loaded -->
+    <button id="btn" onclick="fetchProducts()">FetchData</button>
+    
+    <select id="categoryFilter" onchange="filterByCategory()">
+        <option value="all">ALL</option>
+        <option></option>
+    </select>
+
+    <div id="productContainer"></div>
+</body>
+<script>
+    async function filterByCategory(){
+        let response=await fetch()
+        let products=await response.json(); //converting into js object
+
+        <!-- let selectedcategory=document.getElementById('categoryFilter').value;
+        let filteredProducts=
+        selectedcategory=='all'
+        ? products
+        : products.filter() -->
+    }
+
+    async function fetchProducts(){
+        let button=document.getElementById('btn');
+        try{
+            button.disabled=true
+            let response=await fetch("https://jsonplaceholder.typicode.com/posts")
+        let products=await response.json();
+        console.log(products);
+
+        let container=document.getElementById('productContainer')
+
+        products.forEach((product, index)=>{
+            let productBox=document.createElement('div')
+            productBox.innerHTML=`
+            <h3>${product.title}</h3>
+            <p>${product.price}</p>
+            `
+            container.appendChild(productBox);
+        })
+        }catch(error){
+            alert("failed to fetch the products")
+        }finally{
+            button.disabled=false
+        }
+    }
+
+    fetchProducts();
+</script>
+</html>
